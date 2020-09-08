@@ -10,7 +10,7 @@ customize it with new APIs, data types, and persistence engines to make your dat
 - For information about how to use Stargate, visit [stargate.io](https://stargate.io/)
 - To ask questions, collaborate, and chat, visit our [Discord](https://discord.gg/Jv6jp8T)
 - To learn how to participate in our community, visit our [community page](https://stargate.io/community)
-- To set up and use a Stargate development environment, visit the [dev guide](DEVELOPERS_GUIDE.md)
+- To set up and use a Stargate development environment, visit the [dev guide](DEV_GUIDE.md)
 
 ## Contents
 - [Introduction](#introduction)

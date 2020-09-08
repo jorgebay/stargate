@@ -6,6 +6,7 @@ To build locally run the following:
 ./mvnw clean package
 ```
 
+* If you get a `Could not find or load main class org.apache.maven.wrapper.MavenWrapperMain` exception, upgrade your local `wget`
 ## Running Locally
 
 ### Prerequisite
