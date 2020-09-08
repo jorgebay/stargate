@@ -1,114 +1,57 @@
+![Java CI](https://github.com/stargate/stargate/workflows/Java%20CI/badge.svg)
+
 # Stargate
 
-![Java CI](https://github.com/stargate/stargate/workflows/Java%20CI/badge.svg)
+An open source API framework for data
+
+Stargate was built with extensibility as a first class citizen;
+customize it with new APIs, data types, and persistence engines to make your data work for you.
+
+- For information about how to use Stargate, visit [stargate.io](https://stargate.io/)
+- To ask questions, collaborate, and chat, visit our [Discord](https://discord.gg/Jv6jp8T)
+- To learn how to participate in our community, visit our [community page](https://stargate.io/community)
+- To set up and use a Stargate development environment, visit the [dev guide](DEVELOPERS_GUIDE.md)
+
+## Contents
+- [Introduction](#introduction)
+- [Repositories](#repositories)
+- [Issue Management](#issue-management)
 
 ## Introduction
 
-An open framework that makes it easy to use Apache Cassandra&reg; for any workload by adding plug-in support for new APIs, data 
-types, and data access methods
+Stargate is an open source API framework that acts as a data gateway proxy and lives in front of a database.
+It enables customization of all aspects of data access and contains abstracted services for authentication, data APIs, request handling and routing, and persistence backends.
+The current form implements an Apache Cassandra backend but there are no bounds to the databases or APIs that this framework can support.
 
-## Building
+Stargate is contains the following components:
 
-To build locally run the following:
+- Coordinator: TODO
+- API Services: TODO
 
-```sh
-./mvnw clean package
-```
+    - cql: API implementation for the Cassandra Query Language
+    - restapi: API implementation for exposing Cassandra data over REST
 
-## Running Locally
+- Persistence Services: TODO
 
-### Prerequisite
+    - persistence-api: TODO
+    - persistence-common: TODO
 
-Before starting locally you will need an instance of either Apache Cassandra&reg;. The easiest way to do this is with a 
-docker image. 
+- Authentication Services: Responsible for authentication to Stargate
 
-*NOTE* due to the way networking works with Docker for Mac, the Docker method only works on Linux. Use CCM (see below) for 
-use with Macs.
+    - auth-api: REST service for generating auth token
+    - auth-service-file: Service to store tokens in files
+    - authentication: Interface for working with auth providers
 
-Apache Cassandra&reg;
+- Filters: TODO
 
-```sh
-docker run --name local-cassandra \
---net=host \
--e CASSANDRA_CLUSTER_NAME=stargate \
--d cassandra:3.11.6
-```
+## Repositories
 
-or to run locally with [ccm](https://github.com/riptano/ccm)
+- stargate/stargate
+- stargate/api-extensions
+- stargate/persistence-extensions
+- stargate/docs
+- stargate/website
 
-```sh
-ccm create -v 3.11.6 -b -n 1:0 -i 127.0.0 stargate && ccm start
-```
+## Issue Management
 
-### Start commands
-
-Before starting on OSX you'll need to add an additional loopback
-
-```sh
-sudo ifconfig lo0 alias 127.0.0.2
-```
-
-Can run from the command line with
-
-```
-./starctl --cluster-name stargate --cluster-seed 127.0.0.1 --cluster-version 3.11 --listen 127.0.0.2 --simple-snitch
-
-# See all cli options with -h
-```
-
-Or with Docker
-
-```sh
-docker build -t stargate . && docker run -i -t stargate
-```
-
-`starctl` respects the `JAVA_OPTS` environment variable. 
-For example, to set a java system property with spaces in its value one can run `starctl` as follows. 
-Note the double quotes embedded in the env. var value - it is re-evalutated (once) as a `bash` token before being
-passed to the JVM. This is required to break the single value of `JAVA_OPTS` into a sequence of tokens.
-This kind of processing is not required for ordinary command line arguments, therefore they do not need any extra
-quoting.
-
-```shell script
-env JAVA_OPTS='-Dmy_property="some value"' ./starctl --cluster-name 'Some Cluster' ...
-```
-
-### Debugging
-
-If you're an IntelliJ user you can use start the project with
-
-```sh
-java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005 -Dstargate.libdir=./stargate-lib stargate-lib/stargate-starter-1.0-SNAPSHOT.jar
-```
-
-Alternatively, use the `JAVA_OPTS` environment variable to pass debugging options to the JVM
-
-```shell script
-env JAVA_OPTS='-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005' ./starctl --cluster-name stargate ...
-```
-
-and then follow the steps found [here](https://www.baeldung.com/intellij-remote-debugging)
-
-
-## Connecting
-
-### CQL
-
-Connect to CQL as normal on port 9042
-
-```sh
-$ cqlsh 127.0.0.2 9042
-Connected to stargate at 127.0.0.2:9042.
-[cqlsh 5.0.1 | Cassandra 3.11.6 | CQL spec 3.4.4 | Native protocol v4]
-Use HELP for help.
-```
-
-### REST
-
-Curl over port 8082
-
-```sh
-curl -L -X GET 'localhost:8082/v1/health' \
---header 'accept: application/json' \
---header 'content-type: application/json'
-```
+TODO
