@@ -20,19 +20,19 @@ by adding plugin support for new APIs, data types, and access methods.
 ## Introduction
 
 Stargate was born because we got tired of using different databases and different APIs depending on the work that we were trying to get done.
-With "read the manual" fatigue wearing on us, we thought - *why not create a database-agnostic framework that can serve many APIs for varying workloads?*
+With "read the manual" fatigue wearing on us every time we created a new project, we thought - *why not create a database-agnostic framework that can serve many APIs for varying workloads?*
 
 With that seed, we built Stargate. It enables customization of all aspects of data access and has modules for authentication, APIs, request handling / routing, and persistence backends.
 The current form implements an Apache Cassandra (C*) backend but there are no bounds to the databases or APIs that this framework can support.
 
 Stargate contains the following components:
 
-- API Services: Responsible for defining the API, handling and converting requests to db query, dispatching to persistence, returning and serving response
+- **API Services**: Responsible for defining the API, handling and converting requests to db queries, dispatching to persistence, returning and serving response
 
     - cql: API implementation for the Cassandra Query Language
     - restapi: API implementation for exposing Cassandra data over REST
 
-- Persistence Services: Responsible for implementing the coordination layer to execute requests passed by API services to underlying data storage instances.
+- **Persistence Services**: Responsible for implementing the coordination layer to execute requests passed by API services to underlying data storage instances.
 
     - persistence-api: Interface for working with persistence services
     - persistence-common: Utilities shared by the persistence services
@@ -41,7 +41,7 @@ Stargate contains the following components:
     executes requests with C* storage nodes using C* QueryHandler/QueryProcessor,
     converts internal C* objects and ResultSets to Stargate Datastore objects.
 
-- Authentication Services: Responsible for authentication to Stargate
+- **Authentication Services**: Responsible for authentication to Stargate
 
     - auth-api: REST service for generating auth tokens
     - auth-service-file: Service to store tokens in files
