@@ -5,7 +5,7 @@
 An open source API framework for data.
 
 Stargate is a data gateway deployed between client applications and a database.
-It is built with extensibility as a first-class citizen and makes it easy to use a database for any application
+It is built with extensibility as a first-class citizen and makes it easy to use a database for any application workload
 by adding plugin support for new APIs, data types, and access methods.
 
 - For information about how to use Stargate, visit [stargate.io](https://stargate.io/)
@@ -20,10 +20,10 @@ by adding plugin support for new APIs, data types, and access methods.
 ## Introduction
 
 Stargate was born because we got tired of using different databases and different APIs depending on the work that we were trying to get done.
-With "read the manual" fatigue wearing on us every time we created a new project, we thought - *why not create a database-agnostic framework that can serve many APIs for varying workloads?*
+With "read the manual" fatigue and lengthy selection processes wearing on us every time we created a new project, we thought - *why not create a database-agnostic framework that can serve many APIs for a range of workloads?*
 
 With that seed, we built Stargate. It enables customization of all aspects of data access and has modules for authentication, APIs, request handling / routing, and persistence backends.
-The current form implements an Apache Cassandra (C*) backend but there are no bounds to the databases or APIs that this framework can support.
+The current form is specific to the Apache Cassandra (C*) backend but there are no bounds to the databases or APIs that this framework can support.
 
 Stargate contains the following components:
 
